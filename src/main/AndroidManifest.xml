@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.qin">
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="false"
+        android:resizeable="true"
+        android:smallScreens="true" />
+    <application
+        android:name=".application.MyApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        tools:replace="android:icon,android:theme,android:allowBackup ">
+
+        <!-- 设置key -->
+        <meta-data
+            android:name="com.amap.api.v2.apikey"
+            android:value="7b379c16872a95a6bea81db61cc974e6" />
+
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="lDCvR6qMsur9Ub3u89LoKNLgT9SljBOq" />
+
+        <!-- 定位需要的服务 -->
+        <service android:name="com.amap.api.location.APSService" />
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+
+        <activity
+            android:name=".activity.MainActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!--  百度地图附近poi-->
+        <activity
+            android:name=".map.activity.baidu.BaiduMapSearchPoiActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".map.activity.baidu.BaiduMapPoiActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+
+        <!--  高德地图附近poi-->
+        <activity
+            android:name=".map.activity.gaode.MapNearbyPoiActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <!--高德地图起点终点-->
+        <activity
+            android:name=".map.activity.gaode.StartAndEndPointActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <!--百度地图全景显示-->
+        <activity
+            android:name=".map.activity.baidu.BaiduMapPanoramaActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:screenOrientation="sensor" />
+        <!--高德地图导航组件-->
+        <activity
+            android:name="com.amap.api.navi.AmapRouteActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.NoTitleBar" />
+        <!--  高德地图导航activity-->
+        <activity
+            android:name=".map.activity.gaode.RouteNaviActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <!--高德地图导航路线规划-->
+        <activity
+            android:name=".map.activity.gaode.RestRouteShowActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+
+
+        <!--   高德地图路线规划-->
+        <activity
+            android:name=".map.route.BusRouteActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name=".map.route.BusRouteDetailActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name=".map.route.DriveRouteActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name=".map.route.DriveRouteDetailActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name=".map.route.WalkRouteActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+        <activity
+            android:name=".map.route.WalkRouteDetailActivity"
+            android:theme="@android:style/Theme.Light.NoTitleBar" />
+
+        <!--  其他组建-->
+        <activity
+            android:name=".activity.ParkingSeatActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.RegisterActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <!-- <activity
+             android:name=".activity.MainActivity"
+             android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />-->
+        <activity
+            android:name=".activity.LoginActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.SettingActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.SettingDetailActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.LocationActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.GasStationActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.ParkingActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.RepairShopActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.WebViewActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".map.activity.baidu.BaiduMainToMapPoiActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.BreakRuleActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.OwnerServiceActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.WashCarActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.ServiceActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.ToliteActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.VehicleOfficeActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.DrawerPersonalInfoActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.DrawerMyCarActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.DrawerRepairHistoryActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.DrawerCollectionActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.CarControlWebActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <activity
+            android:name=".activity.CarControlMoreActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
+        <!-- <activity
+             android:name=".map.activity.RoutePlanActivity" />-->
+        <receiver android:name=".recevier.NetworkChangedReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+
+    </application>
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="com.android.launcher.permission.READ_SETTINGS" />
+
+
+</manifest>
