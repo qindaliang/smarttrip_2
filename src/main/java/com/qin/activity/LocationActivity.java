@@ -126,7 +126,7 @@ public class LocationActivity extends AppCompatActivity {
          */
         rlvLocationHistory.setItemAnimator(new DefaultItemAnimator());
         rlvLocationHistory.setLayoutManager(mHistorymanager);
-        rlvLocationHistory.addItemDecoration(new MarginDecoration(this));
+        rlvLocationHistory.addItemDecoration(new MarginDecoration(10));
 //        rlvLocationHistory.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         mHistoryAdapter = new LocationHistoryRecyclerViewAdapter(mHistoryLists);
         if (historylocation != null) {

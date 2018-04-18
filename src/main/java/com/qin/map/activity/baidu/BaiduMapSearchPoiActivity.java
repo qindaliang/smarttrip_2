@@ -212,7 +212,7 @@ public class BaiduMapSearchPoiActivity extends AppCompatActivity implements OnGe
         mSearchLayoutManager = new GridLayoutManager(this, 3);
         recyclerViewSearchOften.setLayoutManager(mSearchLayoutManager);
         //给每一个item添加间距
-        recyclerViewSearchOften.addItemDecoration(new MarginDecoration(this));
+        recyclerViewSearchOften.addItemDecoration(new MarginDecoration(10));
         //   recyclerViewSearchOften.addItemDecoration(new DividerItemDecoration(this, HORIZONTAL));
         recyclerViewSearchOften.setAdapter(mSearchOftenLocationAdapter);
 

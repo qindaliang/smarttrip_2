@@ -12,8 +12,8 @@ public class MarginDecoration extends RecyclerView.ItemDecoration {
 
     private int margin;
 
-    public MarginDecoration(Context context){
-        margin = 10;
+    public MarginDecoration(int space){
+        this.margin = space;
     }
 
     @Override

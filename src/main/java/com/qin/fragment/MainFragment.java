@@ -797,7 +797,7 @@ public class MainFragment extends Fragment {
         intent = new Intent();
         intent.putExtra(ConstantValues.OWNERNUMBER, number);
         intent.setClass(context, clzss);
-        context.startActivity(intent, ActivityOptionsCompat.makeSceneTransitionAnimation(mActivity, textView, "main").toBundle());
+        context.startActivity(intent);
     }
 
     @NonNull
@@ -924,8 +924,8 @@ public class MainFragment extends Fragment {
 //                accessNetAirQuality();
 //                accessNetGASPrice();
 //                accessNet();
-                accessNetCarControl();
-                accessNetTrafficNews();
+ //               accessNetCarControl();
+//                accessNetTrafficNews();
                 SPUtils.getInstance(mActivity).putString(ConstantValues.MAIN_LOCATION_LAT, location.getLatitude() + "", true);
                 SPUtils.getInstance(mActivity).putString(ConstantValues.MAIN_LOCATION_LON, location.getLongitude() + "", true);
                 SPUtils.getInstance(mActivity).putString(ConstantValues.MAIN_LOCATION_CITY, location.getCity(), true);
