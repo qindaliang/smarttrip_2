@@ -39,4 +39,5 @@ public class ConstantValues {
     public static final String PARKING_POI = "停车场poi";
     public static final String PARKING_LAT = "停车场lat";
     public static final String PARKING_LON = "停车场lon";
+    public static final String OPEN_UPDATE = "更新";
 }

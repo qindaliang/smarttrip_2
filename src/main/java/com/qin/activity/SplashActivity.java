@@ -2,7 +2,6 @@ package com.qin.activity;
 
 import android.app.Dialog;
 import android.content.Intent;
-import android.graphics.drawable.Animatable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.SystemClock;
@@ -10,7 +9,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -30,12 +28,12 @@ public class SplashActivity extends AppCompatActivity {
     private int n = 0;
     private int titleLength = 0;
     private String title = "易行，简单你的生活";
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
+
         // ((Animatable) ivSplash.getDrawable()).start();
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -116,4 +114,5 @@ public class SplashActivity extends AppCompatActivity {
             }
         }.start();
     }
+
 }
