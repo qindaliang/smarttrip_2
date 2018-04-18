@@ -13,13 +13,11 @@
 
         <ImageView
             android:id="@+id/iv_login_logo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
+            android:layout_width="300dp"
+            android:layout_height="140dp"
             android:layout_above="@id/ll_login"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="30dp"
-            android:src="@mipmap/splash_car" />
+            android:src="@drawable/smart_trip" />
 
         <LinearLayout
             android:id="@+id/ll_login"

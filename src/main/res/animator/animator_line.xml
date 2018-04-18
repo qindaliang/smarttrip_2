@@ -6,7 +6,7 @@
         android:propertyName="trimPathEnd"
         android:valueFrom="0"
         android:repeatCount="infinite"
-        android:repeatMode="restart"
+        android:repeatMode="reverse"
         android:valueTo="1"
         android:valueType="floatType"/>
 </set>

@@ -36,9 +36,9 @@
             android:process=":remote" />
 
         <activity
-            android:name=".activity.MainActivity"
-            android:theme="@style/MyTheme.MainActivity.Light.ActionBar">
-
+            android:name=".activity.CarSplashActivity"
+            android:theme="@style/MyTheme.MainActivity.Light.ActionBar"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -111,9 +111,9 @@
         <activity
             android:name=".activity.RegisterActivity"
             android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
-        <!-- <activity
+         <activity
              android:name=".activity.MainActivity"
-             android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />-->
+             android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
         <activity
             android:name=".activity.LoginActivity"
             android:theme="@style/MyTheme.MainActivity.Light.ActionBar" />
