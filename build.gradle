@@ -64,4 +64,5 @@ dependencies {
     implementation project(':progresslibrary')
     implementation 'com.youth.banner:banner:1.4.10'
     implementation 'com.allenliu.versionchecklib:library:2.0.3'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
 }

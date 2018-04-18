@@ -13,6 +13,7 @@ import com.lzy.okgo.cookie.store.SPCookieStore;
 import com.lzy.okgo.https.HttpsUtils;
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
 import com.qin.R;
+import com.squareup.leakcanary.LeakCanary;
 import com.weavey.loading.lib.LoadingLayout;
 
 import java.util.concurrent.TimeUnit;
@@ -33,6 +34,7 @@ public class MyApplication extends Application {
         super.onCreate();
       //  Thread.setDefaultUncaughtExceptionHandler(this);
         SDKInitializer.initialize(getApplicationContext());
+        LeakCanary.install(this);
         registerActivityLifecycleCallbacks(new ActivityLifecycleCallbacks() {
             @Override
             public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
