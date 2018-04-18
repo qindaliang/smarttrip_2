@@ -83,4 +83,9 @@ public class OwnerServiceActivity extends AppCompatActivity {
         mBeginTransaction.replace(R.id.fl_owner, fragment);
         mBeginTransaction.commit();
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

@@ -1,7 +1,5 @@
 package com.qin.fragment.main.owner;
 
-import android.app.Fragment;
-import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -28,6 +26,7 @@ public class CarTypeFragment extends BaseFragment {
     Unbinder unbinder;
     @BindView(R.id.fl_main_cartype)
     FrameLayout flMainCartype;
+    private CarBrandFragment mCarBrandFragment;
 
     @Override
     public View initView() {
@@ -44,15 +43,20 @@ public class CarTypeFragment extends BaseFragment {
 
     @Override
     protected void initData() {
+
+        android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        mCarBrandFragment = new CarBrandFragment();
+        transaction.replace(R.id.fl_main_cartype, mCarBrandFragment).commit();
+
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mActivity.finish();
+                getFragmentManager().popBackStack();
+                if (mCarBrandFragment.isVisible()){
+                    mActivity.finish();
+                }
             }
         });
-        android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
-        CarBrandFragment carBrandFragment = new CarBrandFragment();
-        transaction.replace(R.id.fl_main_cartype,carBrandFragment).commit();
     }
 
 
