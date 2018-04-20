@@ -1,9 +1,11 @@
 package com.qin.activity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -27,16 +29,21 @@ import com.amap.api.services.weather.LocalWeatherLive;
 import com.amap.api.services.weather.LocalWeatherLiveResult;
 import com.amap.api.services.weather.WeatherSearch;
 import com.amap.api.services.weather.WeatherSearchQuery;
+import com.mikepenz.google_material_typeface_library.GoogleMaterial;
+import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
 import com.mikepenz.materialdrawer.DrawerBuilder;
 import com.mikepenz.materialdrawer.model.PrimaryDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
+import com.mikepenz.materialdrawer.model.ProfileSettingDrawerItem;
+import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
 import com.qin.R;
+import com.qin.constant.ConstantValues;
 import com.qin.fragment.MainFragment;
 import com.qin.recevier.NetworkChangedReceiver;
 import com.qin.util.ToastUtils;
@@ -104,17 +111,24 @@ public class MainActivity extends AppCompatActivity implements WeatherSearch.OnW
                 .withCompactStyle(false)
                 .withHeaderBackground(R.color.blue)
                 .addProfiles(new ProfileDrawerItem().withName("Mike Penz").withEmail("mikepenz@gmail.com").withIcon(R.mipmap.gas_blank).withIdentifier(100),
-                        new ProfileDrawerItem().withName("Mike Penz").withEmail("mikepenz@gmail.com").withIcon(R.mipmap.gas_blank).withIdentifier(101))
+                        new ProfileDrawerItem().withName("Mike Penz").withEmail("mikepenz@gmail.com").withIcon(R.mipmap.gas_blank).withIdentifier(101),
+                        new ProfileSettingDrawerItem().withName("添加账号").withDescription("添加一个账号").withIcon(new IconicsDrawable(this, GoogleMaterial.Icon.gmd_add).actionBar().paddingDp(5).colorRes(R.color.material_drawer_primary_text)).withIdentifier(102),
+                        new ProfileSettingDrawerItem().withName("管理账号").withIcon(GoogleMaterial.Icon.gmd_settings).withIdentifier(103))
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
 
                     public boolean onProfileChanged(View view, IProfile profile, boolean current) {
                         switch ((int) profile.getIdentifier()) {
                             case 100:
-                                Toast.makeText(MainActivity.this, "100头像被点击", Toast.LENGTH_SHORT).show();
-                                DrawerPersonalInfoActivity.startAction(MainActivity.this);
+                                Toast.makeText(MainActivity.this, "100", Toast.LENGTH_SHORT).show();
                                 break;
                             case 101:
-                                Toast.makeText(MainActivity.this, "101头像被点击", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(MainActivity.this, "101", Toast.LENGTH_SHORT).show();
+                                break;
+                            case 102:
+                                Toast.makeText(MainActivity.this, "102", Toast.LENGTH_SHORT).show();
+                                break;
+                            case 103:
+                                Toast.makeText(MainActivity.this, "103", Toast.LENGTH_SHORT).show();
                                 break;
                             default:
                                 break;
@@ -132,11 +146,19 @@ public class MainActivity extends AppCompatActivity implements WeatherSearch.OnW
                 .withDisplayBelowStatusBar(false)
                 .withActionBarDrawerToggleAnimated(true)
                 .addDrawerItems(
-                        new PrimaryDrawerItem().withName("个人信息").withIdentifier(10),
-                        new PrimaryDrawerItem().withName("我的车辆").withIdentifier(11),
-                        new PrimaryDrawerItem().withName("维修记录").withIdentifier(12),
-                        new PrimaryDrawerItem().withName("我的收藏").withIdentifier(13),
-                        new PrimaryDrawerItem().withName("设置").withIdentifier(14)
+                        new SecondaryDrawerItem().withName("个人信息").withIcon(GoogleMaterial.Icon.gmd_brightness_5).withIdentifier(10),
+                        new SecondaryDrawerItem().withName("我的车辆").withIcon(GoogleMaterial.Icon.gmd_brightness_5).withIdentifier(11),
+
+                        new SecondaryDrawerItem().withName("历史足迹").withIcon(GoogleMaterial.Icon.gmd_brightness_5).withIdentifier(13),
+                        new SecondaryDrawerItem().withName("维修记录").withIcon(GoogleMaterial.Icon.gmd_brightness_5).withIdentifier(14),
+                        new SecondaryDrawerItem().withName("位置提醒点").withIcon(GoogleMaterial.Icon.gmd_brightness_5).withIdentifier(15),
+                        new SecondaryDrawerItem().withName("我的收藏").withIcon(GoogleMaterial.Icon.gmd_brightness_5).withIdentifier(16),
+                        new SecondaryDrawerItem().withName("使用指南").withIcon(GoogleMaterial.Icon.gmd_brightness_5).withIdentifier(17),
+                        new SecondaryDrawerItem().withName("检测更新").withIcon(GoogleMaterial.Icon.gmd_brightness_5).withIdentifier(18),
+                        new SecondaryDrawerItem().withName("当前版本").withIcon(GoogleMaterial.Icon.gmd_brightness_5).withIdentifier(19),
+                        new SecondaryDrawerItem().withName("开发人员").withIcon(GoogleMaterial.Icon.gmd_brightness_5).withIdentifier(20),
+                        new SecondaryDrawerItem().withName("退出账号").withIcon(GoogleMaterial.Icon.gmd_brightness_5).withIdentifier(21),
+                        new SectionDrawerItem()
                 )
                 .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                     @Override
@@ -144,20 +166,27 @@ public class MainActivity extends AppCompatActivity implements WeatherSearch.OnW
                         if (drawerItem != null) {
                             Intent intent = null;
                             if (drawerItem.getIdentifier() == 10) {
-                                ToastUtils.showBgResource(MainActivity.this, "10");
-                                DrawerPersonalInfoActivity.startAction(MainActivity.this);
+                                StartFragment(10);
                             } else if (drawerItem.getIdentifier() == 11) {
-                                ToastUtils.showBgResource(MainActivity.this, "11");
-                                DrawerMyCarActivity.startAction(MainActivity.this);
-                            } else if (drawerItem.getIdentifier() == 12) {
-                                ToastUtils.showBgResource(MainActivity.this, "12");
-                                DrawerRepairHistoryActivity.startAction(MainActivity.this);
+                                StartFragment(11);
                             } else if (drawerItem.getIdentifier() == 13) {
-                                ToastUtils.showBgResource(MainActivity.this, "13");
-                                DrawerCollectionActivity.startAction(MainActivity.this);
+                                StartFragment(13);
                             } else if (drawerItem.getIdentifier() == 14) {
-                                ToastUtils.showBgResource(MainActivity.this, "设置");
-                                SettingActivity.startAction(MainActivity.this);
+                                StartFragment(14);
+                            }else if (drawerItem.getIdentifier() == 15) {
+                                StartFragment(15);
+                            }else if (drawerItem.getIdentifier() == 16) {
+                                StartFragment(16);
+                            }else if (drawerItem.getIdentifier() == 17) {
+                                StartFragment(17);
+                            }else if (drawerItem.getIdentifier() == 18) {
+
+                            }else if (drawerItem.getIdentifier() == 19) {
+
+                            }else if (drawerItem.getIdentifier() == 20) {
+                                StartFragment(20);
+                            }else if (drawerItem.getIdentifier() == 21) {
+
                             }
                         }
                         return true;
@@ -167,6 +196,13 @@ public class MainActivity extends AppCompatActivity implements WeatherSearch.OnW
                 .build();
     }
 
+    @NonNull
+    public void StartFragment(int number) {
+        Intent intent = new Intent();
+        intent.putExtra(ConstantValues.DRAWERNUMBER, number);
+        intent.setClass(this, DrawerActivity.class);
+        startActivity(intent);
+    }
 
     /**
      * 实时天气查询

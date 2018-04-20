@@ -49,12 +49,14 @@ dependencies {
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.5.1'
     implementation 'com.github.hackware1993:MagicIndicator:1.5.0'
     implementation 'com.lzy.net:okgo:3.0.4'
-    implementation "com.github.bumptech.glide:glide:4.5.0"
+    implementation 'com.github.bumptech.glide:glide:4.5.0'
     implementation project(':loadinglayout')
     implementation files('libs/AMap_Location_V3.8.0_20180201.jar')
     implementation files('libs/AMap_Search_V5.7.0_20171229.jar')
     implementation files('libs/Msc.jar')
     implementation files('libs/AMap3DMap_6.0.1_AMapNavi_6.0.1_20180309.jar')
+    implementation files('libs/unity-classes.jar')
+    implementation(name: 'VuforiaWrapper', ext:'aar')
     repositories {
         mavenCentral()
     }
@@ -65,4 +67,5 @@ dependencies {
     implementation 'com.youth.banner:banner:1.4.10'
     implementation 'com.allenliu.versionchecklib:library:2.0.3'
     debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.4'
+
 }

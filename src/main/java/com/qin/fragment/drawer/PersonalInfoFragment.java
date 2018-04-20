@@ -29,7 +29,7 @@ public class PersonalInfoFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_parking, null, false);
+        View view = inflater.inflate(R.layout.fragment_personalinfo, null, false);
         return view;
     }
 }

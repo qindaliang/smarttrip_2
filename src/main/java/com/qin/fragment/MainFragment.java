@@ -48,6 +48,7 @@ import com.qin.activity.ServiceActivity;
 import com.qin.activity.ToliteActivity;
 import com.qin.activity.VehicleOfficeActivity;
 import com.qin.activity.WashCarActivity;
+import com.qin.activity.car.UnityPlayerActivity;
 import com.qin.constant.ConstantValues;
 import com.qin.map.activity.baidu.BaiduMapPoiActivity;
 import com.qin.pojo.airquality.AirQuality;
@@ -440,7 +441,7 @@ public class MainFragment extends Fragment {
     }
 
     private void accessNetCarControl() {
-        String url = CARCONTROL_URL_HEAD+allCity+CARCONTROL_URL_END;
+        String url = CARCONTROL_URL_HEAD + allCity + CARCONTROL_URL_END;
         OkGo.<String>get(url).tag(this).execute(new StringCallback() {
             @Override
             public void onSuccess(Response<String> response) {
@@ -457,7 +458,7 @@ public class MainFragment extends Fragment {
     }
 
     private void accessNetTrafficNews() {
-        String url = TRAFFIC_URL_HEAD+ allCity +TRAFFIC_URL_END;
+        String url = TRAFFIC_URL_HEAD + allCity + TRAFFIC_URL_END;
         OkGo.<String>get(url).tag(this).execute(new StringCallback() {
             @Override
             public void onSuccess(Response<String> response) {
@@ -531,8 +532,10 @@ public class MainFragment extends Fragment {
                 startActivity(intent);
             }
         });
+        refreshLayout.finishRefresh();
 
     }
+
     private void initBanner() {
         banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
         banner.setImageLoader(new GlideImageLoader());
@@ -553,7 +556,6 @@ public class MainFragment extends Fragment {
                 startActivity(intent);
             }
         });
-
     }
 
     private void initText() {
@@ -684,7 +686,8 @@ public class MainFragment extends Fragment {
                 }
                 break;
             case R.id.floating_action_button:
-                ToastUtils.showBgResource(getActivity(), "这里是啥");
+                intent.setClass(mActivity, UnityPlayerActivity.class);
+                startActivity(intent);
                 break;
             case R.id.tv_main_breakrule:
 //                ToastUtils.showBgResource(getActivity(), "违章");
@@ -757,14 +760,14 @@ public class MainFragment extends Fragment {
                 break;
             case R.id.tv_main_carcotrolmore:
                 intent.putParcelableArrayListExtra("CARCONTROL", mCarResultList);
-                intent.putExtra("title","汽车资讯");
+                intent.putExtra("title", "汽车资讯");
                 intent.setClass(mActivity, CarControlMoreActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 break;
             case R.id.tv_main_trafficmore:
                 intent.putParcelableArrayListExtra("CARCONTROL", mTrafficResultList);
-                intent.putExtra("title","交通快讯");
+                intent.putExtra("title", "交通快讯");
                 intent.setClass(mActivity, CarControlMoreActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
@@ -924,7 +927,7 @@ public class MainFragment extends Fragment {
 //                accessNetAirQuality();
 //                accessNetGASPrice();
 //                accessNet();
- //               accessNetCarControl();
+                //               accessNetCarControl();
 //                accessNetTrafficNews();
                 SPUtils.getInstance(mActivity).putString(ConstantValues.MAIN_LOCATION_LAT, location.getLatitude() + "", true);
                 SPUtils.getInstance(mActivity).putString(ConstantValues.MAIN_LOCATION_LON, location.getLongitude() + "", true);
